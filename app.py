@@ -185,6 +185,7 @@ def update_elo(change_1, change_2, players):
         else:
             data[i] += change_2/2
         x+=1
+        data[i] = round(data[i],1)
     print(change_1,change_2)
     for i in players:
         print(i,data[i])
