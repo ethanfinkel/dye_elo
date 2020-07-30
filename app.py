@@ -49,6 +49,20 @@ def my_form_post():
 
     return jsonify(result=output)
 
+@app.route("/history")
+def show_history():
+
+    return render_template("list.html", history = history)
+
+@app.route("/leaderboard")
+def leaderboard():
+    select_all_data(conn)
+    player_data = {}
+    players = sorted(data.items(), key=lambda x: x[1], reverse=True)
+    for i in players:
+        player_data[i[0]] = round(i[1],0)
+    return render_template("leaderboard.html", players = player_data)
+
 def select_all_history(conn):
     global history
     cur = conn.cursor()

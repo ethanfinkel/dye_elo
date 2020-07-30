@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends 'layout.html' %}
+{% block headline %}
+{% endblock %}
 <head>
     <meta charset="UTF-8">
     <title>Dye ELO</title>
@@ -29,6 +32,7 @@ var score2= $('#score2').val();
             });
 };
   </script>
+{% block content %}
 <body>
     <p>
         Team 1<br><br>
@@ -49,4 +53,5 @@ var score2= $('#score2').val();
     <div class="show-data" >
     </div>
 </body>
+{% endblock %}
 </html>
