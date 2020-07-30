@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dye ELO</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<script>
+function myFunction() {
+var player1= $('#player1').val();
+var player2= $('#player2').val();
+var player3= $('#player3').val();
+var player4= $('#player4').val();
+var score1= $('#score1').val();
+var score2= $('#score2').val();
+  $.ajax({
+              url: "/join",
+              type: "POST",
+              data: {player1:player1,player2:player2,player3:player3,player4:player4,score1:score1,score2:score2}
+          }).done(function(response) {
+            var html= "<br><br><br><p> <b> RESULT : <b><p>";
+            response =response.result;
+                 $.each(response,function(key,val){
+                 console.log(val);
+                    html+="<p>"+val+"<p>"
+                });
+                html +="<br>";
+                $(".show-data").append(html);
+            });
+};
+  </script>
+<body>
+    <p>
+        Team 1<br><br>
+            Player 1<input type="text" id="player1" name="player1"><br><br>
+            Player 2<input type="text" id="player2" name="player2"><br><br>
+    </p>
+    <p>
+            Team 2<br><br>
+            Player 1 <input type="text" id="player3" name="player3"><br><br>
+            Player 2<input type="text" id="player4" name="player4"><br><br>
+    </p>
+    <p>
+            Score<br><br>
+            Team 1 Score<input type="int" id="score1" name="score1"><br><br>
+            Team2 Score<input type="int" id="score2" name="score2"><br><br>
+            <button id="clicked" onclick="myFunction()">Submit</button>
+        </p>
+    <div class="show-data" >
+    </div>
+</body>
+</html>
