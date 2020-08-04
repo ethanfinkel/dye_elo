@@ -51,17 +51,41 @@ def my_form_post():
 
 @app.route("/history")
 def show_history():
-
+    select_all_history(conn)
     return render_template("list.html", history = history)
 
 @app.route("/leaderboard")
 def leaderboard():
     select_all_data(conn)
-    player_data = {}
-    players = sorted(data.items(), key=lambda x: x[1], reverse=True)
-    for i in players:
-        player_data[i[0]] = round(i[1],0)
+    player_data = get_player_data()
     return render_template("leaderboard.html", players = player_data)
+
+@app.route("/<slug>")
+def search(slug):
+    a =slug
+    select_all_history(conn)
+    select_all_data(conn)
+    display_data = {}
+    x = 0
+    for i in history.values():
+        for k in i:
+            if k ==slug:
+                x+=1
+                display_data[x] = i
+    player_data=get_player_data()
+    score = player_data[slug]
+    return render_template("player.html", history =display_data,score =score,slug=slug)
+
+
+def get_player_data():
+    players = sorted(data.items(), key=lambda x: x[1], reverse=True)
+    player_data = {}
+    x =1
+    for i in players:
+        player_data[i[0]] = [round(i[1],0),x]
+        x+=1
+    return player_data
+
 
 def select_all_history(conn):
     global history
@@ -217,5 +241,5 @@ conn = sqlite3.connect(database, check_same_thread=False)
 select_all_data(conn)
 select_all_history(conn)
 if __name__ == '__main__':
-    app.run(host= '0.0.0.0')
+    app.run(host= '0.0.0.0',debug=True)
 

@@ -3,6 +3,11 @@
 {% endblock %}
 {% block content %}
 <div class="container">
+<p>{{slug}}'s Score is: {{score[0]}}</p>
+<p>
+{{slug}}'s Rank is: {{score[1]}}
+</p>
+
     <p>History</p>
     {% for game in history %}
       <p>Team 1 : <a href = "/{{history[game][0]}}"> {{ history[game][0] }}: {{ history[game][1] }} </a>,<a href = "/{{history[game][2]}}">  {{ history[game][2] }}: {{ history[game][3] }} </a> Team 2: <a href = "/{{history[game][5]}}"> {{ history[game][5] }}: {{ history[game][6] }} </a>, <a href = "/{{history[game][7]}}"> {{ history[game][7] }}: {{ history[game][8] }}</a>

@@ -5,7 +5,8 @@
 <div class="container">
     <p>Leaderboard</p>
     {% for player in players %}
-      <p>{{player}}: {{ players[player] }}</p>
+      <p><a href = "/{{player}}"> {{players[player][1]}}.{{player}}: {{ players[player][0] }}</a></p>
+
     {% endfor %}
 </div>
 {% endblock %}
