@@ -146,7 +146,7 @@ def EloRating(Ra, Rb, K, d, s):
     return change_1,change_2
 
 def submit():
-    database = r"/Users/ethan/Desktop/My Stuff/Coding Fun/Machine_Learning/dye/pythonsqlite.db"
+    database = r"/home/ubuntu/dye_elo/pythonsqlite.db"
     conn = create_connection(database)
     select_all_data(conn)
     print("Team 1")
@@ -235,7 +235,7 @@ data = {}
 default_rating = 1000
 history = {}
 
-database = r"/Users/ethan/Desktop/My Stuff/Coding Fun/Machine_Learning/dye/pythonsqlite.db"
+database = r"/home/ubuntu/dye_elo/pythonsqlite.db"
 conn = sqlite3.connect(database, check_same_thread=False)
 #main
 select_all_data(conn)
