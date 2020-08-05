@@ -13,8 +13,9 @@ def home():
     return render_template('home.html')
 @app.route('/join', methods=['GET','POST'])
 def my_form_post():
-    global data
+    global data, history
     select_all_data(conn)
+    select_all_history(conn)
     team1_player1 = request.form['player1']
     word = request.args.get('player1')
     team1_player2 = request.form['player2']
