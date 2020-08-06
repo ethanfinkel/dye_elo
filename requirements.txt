@@ -39,7 +39,7 @@ pyserial==3.4
 python-apt==1.6.5+ubuntu0.3
 python-debian==0.1.32
 PyYAML==3.12
-requests==2.18.4
+requests==2.20.0
 requests-unixsocket==0.1.5
 service-identity==16.0.0
 six==1.11.0
